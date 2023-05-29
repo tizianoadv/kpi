@@ -48,5 +48,19 @@ subprocess.run(["mkdir", "-p", "~\/pki"])
 subprocess.run(["openssl", "x509", "-req", "365", "-in", auth_csr_path, "-signkey", auth_private_key_path, "-out", auth_certificate_path])
 print("[Authority] - Self-signed X509 certificate generated")
 
+# Create clients public keys folder
+client_public_key_folder_path = os.path.join(home_dir, "clients_public_key")
+subprocess.run(["mkdir", "-p", client_public_key_folder_path])
+# Create clients Certificate Signing Request folder
+client_csr_folder_path = os.path.join(home_dir, "clients_csr")
+subprocess.run(["mkdir", "-p", client_csr_folder_path])
+# Create clients Certificate folder
+client_certificate_folder_path = os.path.join(home_dir, "clients_certificate")
+subprocess.run(["mkdir", "-p", client_certificate_folder_path])
+# Create clients Certificate encrypted folder
+client_certificate_encrypted_folder_path = os.path.join(home_dir, "clients_certificate_encrypted")
+subprocess.run(["mkdir", "-p", client_certificate_encrypted_folder_path])
+print("[Authority] - Ready to receive Certificate Signing Requests from clients")
+
 # Clean unseful folder
 subprocess.run(["rm", "-r", "~\\/"])
